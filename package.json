@@ -21,6 +21,7 @@
     "babel-register": "^6.18.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.1",
+    "dotenv-webpack": "^1.5.4",
     "eslint": "^3.9.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -50,8 +51,14 @@
     "rxjs": "^5.4.0"
   },
   "babel": {
-    "plugins": ["transform-object-rest-spread", "babel-plugin-transform-class-properties"],
-    "presets": ["es2015", "react"]
+    "plugins": [
+      "transform-object-rest-spread",
+      "babel-plugin-transform-class-properties"
+    ],
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "eslintConfig": {
     "extends": "airbnb",
@@ -62,10 +69,26 @@
       "import"
     ],
     "rules": {
-      "comma-dangle": ["error", "never"],
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
       "no-multi-spaces": 0,
-      "no-confusing-arrow": ["error", { "allowParens": true }],
-      "max-len": [2, { "code": 100, "ignoreComments": true, "ignoreTrailingComments": true, "ignoreTemplateLiterals": true }],
+      "no-confusing-arrow": [
+        "error",
+        {
+          "allowParens": true
+        }
+      ],
+      "max-len": [
+        2,
+        {
+          "code": 100,
+          "ignoreComments": true,
+          "ignoreTrailingComments": true,
+          "ignoreTemplateLiterals": true
+        }
+      ],
       "import/prefer-default-export": 0,
       "no-console": 0
     }

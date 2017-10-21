@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack             = require('webpack');
 const path                = require('path');
+const Dotenv              = require('dotenv-webpack');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const CopyWebpackPlugin   = require('copy-webpack-plugin');
 const ExtractTextPlugin   = require('extract-text-webpack-plugin');
@@ -38,6 +39,7 @@ module.exports = {
   },
 
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({ template: 'app/index.html', inject: 'body' }),
     new CopyWebpackPlugin([{ from: 'app/assets', to: 'assets' }]),
     new webpack.DefinePlugin({
