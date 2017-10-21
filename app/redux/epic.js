@@ -1,9 +1,9 @@
 import { combineEpics } from 'redux-observable';
 import {
-  noopEpic
-}                       from './modules/items';
+  fetchWeatherEpic
+}                       from './modules/sky';
 
 
 export default combineEpics(
-  noopEpic
+  fetchWeatherEpic
 );

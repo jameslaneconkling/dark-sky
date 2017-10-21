@@ -9,7 +9,7 @@ const childProcess        = require('child_process');
 
 const HOST = 'localhost';
 const PORT = process.env.PORT || 4000;
-const DEV_PROXY = process.env.DEV_PROXY || 'http://localhost:3000';
+const DEV_PROXY = process.env.DEV_PROXY || 'https://api.darksky.net';
 
 
 module.exports = {
@@ -70,9 +70,9 @@ module.exports = {
     host: HOST,
     port: PORT,
     proxy: {
-      '/api/*': {
+      '/forecast/*': {
         target: DEV_PROXY,
-        secure: false,
+        secure: true,
         changeOrigin: true
       }
     }
