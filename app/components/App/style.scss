@@ -1,0 +1,21 @@
+.app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .body-container {
+    position: absolute;
+    max-width: 650px;
+    width: 60%;
+    min-width: 300px;
+    margin: 0 auto;
+    top: 60px;
+    padding-top: 1rem;
+  }
+
+  pre {
+    white-space: normal;
+  }
+}
