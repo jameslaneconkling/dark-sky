@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,700');
 @import 'styles/reset';
 
+
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+.limiter {
+  max-width: 650px;
+  width: 60%;
+  min-width: 300px;
+  margin: 0 auto;
 }

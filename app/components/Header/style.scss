@@ -1,0 +1,19 @@
+.header {
+  height: 60px;
+  background: #222;
+
+  .logo {
+    display: block;
+    width: 34px;
+    height: 34px;
+    padding: 13px;
+    float: left;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 300;
+    padding-top: 14px;
+  }
+}
