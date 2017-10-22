@@ -29,12 +29,12 @@ const app = ({
           <div>
             <p className="summary">{daySummary}</p>
             <div className="shouldBike">
-              <CommuteDisplay
-                weather={morningCommuteWeather}
-              />
-              <CommuteDisplay
-                weather={eveningCommuteWeather}
-              />
+              {
+                [morningCommuteWeather, eveningCommuteWeather]
+                  .filter(weather => weather.length > 0) // edge case: don't show display if no weather points are returned for range
+                  .sort(([a], [b]) => a.dateTime - b.dateTime) // sort displays by time, i.e. in afternoon, show [eveningCommute, tomorrowMorningCommute]
+                  .map((weather, idx) => <CommuteDisplay key={idx} weather={weather} />) // render
+              }
             </div>
           </div>
         }

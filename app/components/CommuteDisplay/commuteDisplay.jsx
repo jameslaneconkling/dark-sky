@@ -42,7 +42,7 @@ const CommuteDisplay = ({ badWeather, morningOrEvening, isToday }) => (
     className="commute-display"
   >
     {badWeather.length === 0 ?
-      <p>Good day to Bike {isToday ? 'this' : 'tomorrow'} {morningOrEvening}</p> :
+      <p>Good day to bike {isToday ? 'this' : 'tomorrow'} {morningOrEvening}</p> :
       <p>Might want to take the metro {isToday ? 'this' : 'tomorrow'} {morningOrEvening} because of {pluralize(badWeather)}</p>
     }
   </div>
