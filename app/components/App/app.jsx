@@ -9,6 +9,7 @@ import Spinner           from '../Spinner';
 import Error             from '../Error';
 import CommuteDisplay    from '../CommuteDisplay';
 import DayDisplay        from '../DayDisplay';
+import Settings          from '../../containers/SettingsContainer';
 import                        './style';
 
 
@@ -19,6 +20,7 @@ const app = ({
     <Header />
     <div className="limiter">
       <div className="body-container">
+        <Settings />
         {status === 'pending' &&
           <div className="spinner-container">
             <Spinner />

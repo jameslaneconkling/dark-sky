@@ -17,7 +17,6 @@ const nameMap = {
 const mapIconName = name => nameMap[name] || 'compass';
 
 const Icon = ({ name }) => (
-  console.log(name) ||
   <span
     className="icon"
   >

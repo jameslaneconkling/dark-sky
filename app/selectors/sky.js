@@ -30,7 +30,7 @@ export const getBadWeatherFromWeather = (state, weather) => {
       // safe to mutate badWeather, as it was created for this reduction
       badWeather.cold = true; // eslint-disable-line no-param-reassign
     } else if (temperature > maxTemp) {
-      badWeather.hot = true; // eslint-disable-line no-param-reassign
+      badWeather.heat = true; // eslint-disable-line no-param-reassign
     }
 
     if (precipitation > maxPrecipitation) {
