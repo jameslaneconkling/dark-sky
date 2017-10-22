@@ -5,7 +5,7 @@ import Error       from '../Error';
 import                  './style';
 
 
-export default ({ status, currentWeather, hourlyWeather }) => (
+const app = ({ status, daySummary, dayIcon, shouldBikeForDay }) => (
   <div className="app">
     <Header />
     <div className="limiter">
@@ -24,11 +24,20 @@ export default ({ status, currentWeather, hourlyWeather }) => (
         }
         {status === 'complete' &&
           <div>
-            <pre>{JSON.stringify(currentWeather, null, 2)}</pre>
-            <pre>{JSON.stringify(hourlyWeather, null, 2)}</pre>
+            <p className="summary">{daySummary}</p>
+            <div className="shouldBike">
+              {shouldBikeForDay ?
+                <p>Good day to Bike</p> :
+                <p>Might want to take the metro</p>
+              }
+            </div>
           </div>
         }
       </div>
     </div>
   </div>
 );
+
+app.propTypes = {};
+
+export default app;

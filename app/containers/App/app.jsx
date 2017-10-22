@@ -2,20 +2,19 @@ import {
   connect
 }                          from 'react-redux';
 import {
-  compose
-}                          from 'recompose';
-import {
   getWeatherRequestStatus,
-  getCurrentWeather,
-  getHourlyWeather
+  getDaySummary,
+  getDayIcon,
+  getShouldBikeForDay
 }                          from '../../selectors/sky';
 import App                 from '../../components/App';
 
 const AppContainer = connect(
   state => ({
     status: getWeatherRequestStatus(state),
-    currentWeather: getCurrentWeather(state),
-    hourlyWeather: getHourlyWeather(state)
+    daySummary: getDaySummary(state),
+    dayIcon: getDayIcon(state),
+    shouldBikeForDay: getShouldBikeForDay(state)
   })
 )(App);
 

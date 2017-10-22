@@ -7,6 +7,19 @@ import                        'rxjs/add/operator/startWith';
 
 
 /**
+ * Utils
+ */
+const deserializeHourly = ({ data }) =>
+  data.map(({ time, summary, icon, precipProbability, temperature }) => ({
+    time: time * 1000,
+    summary,
+    icon,
+    precipProbability,
+    temperature
+  }));
+
+
+/**
  * constants
  */
 export const FETCH_WEATHER = 'FETCH_WEATHER';
@@ -28,8 +41,9 @@ export const fetchWeatherError = () => ({ type: FETCH_WEATHER_ERROR });
 export default (
   state = {
     status: 'complete',
-    currently: {},
-    hourly: {}
+    icon: null,
+    summary: '',
+    hourly: []
   },
   action
 ) => {
@@ -47,8 +61,9 @@ export default (
     return {
       ...state,
       status: 'complete',
-      current: action.response.currently,
-      hourly: action.response.hourly
+      icon: action.response.currently.icon,
+      summary: action.response.hourly.summary,
+      hourly: deserializeHourly(action.response.hourly)
     };
   }
 
