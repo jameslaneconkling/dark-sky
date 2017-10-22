@@ -31,8 +31,8 @@ export default (
     maxPrecipitation: 0.1,
     morningStartTime: { hours: 8, minutes: 0 },
     morningEndTime: { hours: 9, minutes: 0 },
-    eveningStartTime: { hours: 5, minutes: 0 },
-    eveningEndTime: { hours: 6, minutes: 0 }
+    eveningStartTime: { hours: 17, minutes: 0 },
+    eveningEndTime: { hours: 18, minutes: 0 }
   },
   action
 ) => {
