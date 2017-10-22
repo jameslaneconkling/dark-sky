@@ -41,9 +41,10 @@ const CommuteDisplay = ({ badWeather, morningOrEvening, isToday }) => (
   <div
     className="commute-display"
   >
+    <h2>{isToday ? 'This' : 'Tomorrow'} {morningOrEvening}</h2>
     {badWeather.length === 0 ?
-      <p>Good day to bike {isToday ? 'this' : 'tomorrow'} {morningOrEvening}</p> :
-      <p>Might want to take the metro {isToday ? 'this' : 'tomorrow'} {morningOrEvening} because of {pluralize(badWeather)}</p>
+      <p>Good day to bike</p> :
+      <p>Might want to take the metro because of {pluralize(badWeather)}</p>
     }
   </div>
 );
@@ -51,7 +52,7 @@ const CommuteDisplay = ({ badWeather, morningOrEvening, isToday }) => (
 
 CommuteDisplay.propTypes = {
   badWeather: arrayOf(string).isRequired,
-  morningOrEvening: oneOf(['morning', 'evening']).isRequired,
+  morningOrEvening: oneOf(['Morning', 'Evening']).isRequired,
   isToday: bool.isRequired
 };
 
@@ -67,8 +68,8 @@ export default compose(
     ({ weather, morningStartTime, morningEndTime, ...rest }) => ({
       ...rest,
       morningOrEvening: isMorning(weather[0].dateTime, morningStartTime, morningEndTime) ?
-        'morning' :
-        'evening',
+        'Morning' :
+        'Evening',
       isToday: isToday(weather[0].dateTime)
     })
   )

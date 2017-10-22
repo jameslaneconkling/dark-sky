@@ -33,11 +33,7 @@ const app = ({
         }
         {status === 'complete' &&
           <div>
-            <DayDisplay
-              summary={daySummary}
-              icon={dayIcon}
-            />
-            <div className="shouldBike">
+            <div className="should-bike">
               {
                 [morningCommuteWeather, eveningCommuteWeather]
                   .filter(weather => weather.length > 0) // edge case: don't show display if no weather points are returned for range
@@ -45,6 +41,10 @@ const app = ({
                   .map((weather, idx) => <CommuteDisplay key={idx} weather={weather} />) // render
               }
             </div>
+            <DayDisplay
+              summary={daySummary}
+              icon={dayIcon}
+            />
           </div>
         }
       </div>
