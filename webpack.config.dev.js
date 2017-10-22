@@ -4,6 +4,7 @@ const path                = require('path');
 const Dotenv              = require('dotenv-webpack');
 const HtmlWebpackPlugin   = require('html-webpack-plugin');
 const CopyWebpackPlugin   = require('copy-webpack-plugin');
+const SvgStorePlugin      = require('webpack-svgstore-plugin');
 const childProcess        = require('child_process');
 
 
@@ -51,6 +52,14 @@ module.exports = {
     new Dotenv(),
     new HtmlWebpackPlugin({ template: 'app/index.html', inject: 'body' }),
     new CopyWebpackPlugin([{ from: 'app/assets', to: 'assets' }]),
+    new SvgStorePlugin({
+      prefix: '',
+      svgoOptions: {
+        plugins: [
+          { removeTitle: true }
+        ]
+      }
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       'process.env.__GIT_DESCRIPTION__': JSON.stringify(

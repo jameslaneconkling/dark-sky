@@ -55,7 +55,7 @@ const app = ({
 app.propTypes = {
   status: string.isRequired,
   daySummary: string.isRequired,
-  dayIcon: string.isRequired,
+  dayIcon: string,
   morningCommuteWeather: arrayOf(shape()).isRequired,
   eveningCommuteWeather: arrayOf(shape()).isRequired
 };

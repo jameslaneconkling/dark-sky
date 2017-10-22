@@ -8,6 +8,7 @@ import {
   fetchWeather
 }                             from './redux/modules/sky';
 import                             './style.scss';
+import                             './assets/svg-store';
 
 
 if (process.env.NODE_ENV === 'development') {
