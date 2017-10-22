@@ -1,11 +1,14 @@
-import React       from 'react';
-import Header      from '../Header';
-import Spinner     from '../Spinner';
-import Error       from '../Error';
-import                  './style';
+import React             from 'react';
+import Header            from '../Header';
+import Spinner           from '../Spinner';
+import Error             from '../Error';
+import CommuteDisplay    from '../CommuteDisplay';
+import                        './style';
 
 
-const app = ({ status, daySummary, dayIcon, morningCommuteBadWeather, eveningCommuteBadWeather }) => (
+const app = ({
+  status, daySummary, dayIcon, morningCommuteWeather, eveningCommuteWeather
+}) => (
   <div className="app">
     <Header />
     <div className="limiter">
@@ -26,14 +29,12 @@ const app = ({ status, daySummary, dayIcon, morningCommuteBadWeather, eveningCom
           <div>
             <p className="summary">{daySummary}</p>
             <div className="shouldBike">
-              {morningCommuteBadWeather.length === 0 ?
-                <p>Good day to Bike this morning</p> :
-                <p>Might want to take the metro this morning because of {morningCommuteBadWeather.join(', ')}</p>
-              }
-              {eveningCommuteBadWeather.length === 0 ?
-                <p>Good day to Bike this evening</p> :
-                <p>Might want to take the metro this evening because of {eveningCommuteBadWeather.join(', ')}</p>
-              }
+              <CommuteDisplay
+                weather={morningCommuteWeather}
+              />
+              <CommuteDisplay
+                weather={eveningCommuteWeather}
+              />
             </div>
           </div>
         }

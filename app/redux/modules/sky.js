@@ -11,7 +11,7 @@ import                        'rxjs/add/operator/startWith';
  */
 const deserializeHourly = ({ data }) =>
   data.map(({ time, summary, icon, precipProbability, temperature }) => ({
-    time: time * 1000,
+    dateTime: time * 1000,
     summary,
     icon,
     precipitation: precipProbability,

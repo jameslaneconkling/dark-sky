@@ -1,11 +1,8 @@
+import R                  from 'ramda';
 import {
   getMinTemp,
   getMaxTemp,
-  getMaxPrecipitation,
-  getMorningCommuteStartTime,
-  getMorningCommuteEndTime,
-  getEveningCommuteStartTime,
-  getEveningCommuteEndTime
+  getMaxPrecipitation
 }                         from './preferences';
 import {
   time2DateTime
@@ -18,37 +15,28 @@ export const getDayIcon = state => state.sky.icon;
 export const getWeather = state => state.sky.hourly;
 export const getWeatherRange = (state, start, end) =>
   getWeather(state)
-    .filter(({ time }) => (
-      time >= time2DateTime(time, start) &&
-      time <= time2DateTime(time, end)
+    .filter(({ dateTime }) => (
+      dateTime >= time2DateTime(start, dateTime) &&
+      dateTime <= time2DateTime(end, dateTime)
     ));
-export const badWeatherForTimeRange = (state, start, end) => {
+export const getBadWeatherFromWeather = (state, weather) => {
   const minTemp = getMinTemp(state);
   const maxTemp = getMaxTemp(state);
   const maxPrecipitation = getMaxPrecipitation(state);
 
-  return Object.keys(getWeatherRange(state, start, end)
-    .reduce((badWeather, { temperature, precipitation }) => {
-      if (temperature < minTemp) {
-        // safe to mutate badWeather, as it was created for this reduction
-        badWeather.cold = true; // eslint-disable-line no-param-reassign
-      } else if (temperature > maxTemp) {
-        badWeather.hot = true; // eslint-disable-line no-param-reassign
-      }
+  // NOTE - could also use a Set here if polyfilled
+  return Object.keys(weather.reduce((badWeather, { temperature, precipitation }) => {
+    if (temperature < minTemp) {
+      // safe to mutate badWeather, as it was created for this reduction
+      badWeather.cold = true; // eslint-disable-line no-param-reassign
+    } else if (temperature > maxTemp) {
+      badWeather.hot = true; // eslint-disable-line no-param-reassign
+    }
 
-      if (precipitation > maxPrecipitation) {
-        badWeather.rain = true; // eslint-disable-line no-param-reassign
-      }
+    if (precipitation > maxPrecipitation) {
+      badWeather.rain = true; // eslint-disable-line no-param-reassign
+    }
 
-      return badWeather;
-    }, {}));
-};
-export const getShouldBikeForDay = (state) => {
-  const morningStartTime = getMorningCommuteStartTime(state);
-  const morningEndTime = getMorningCommuteEndTime(state);
-  const eveningStartTime = getEveningCommuteStartTime(state);
-  const eveningEndTime = getEveningCommuteEndTime(state);
-
-  return badWeatherForTimeRange(state, morningStartTime, morningEndTime).length === 0 &&
-    badWeatherForTimeRange(state, eveningStartTime, eveningEndTime).length === 0;
+    return badWeather;
+  }, {}));
 };

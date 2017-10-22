@@ -5,7 +5,7 @@ import {
   getWeatherRequestStatus,
   getDaySummary,
   getDayIcon,
-  badWeatherForTimeRange
+  getWeatherRange
 }                          from '../../selectors/sky';
 import {
   getMorningCommuteStartTime,
@@ -20,12 +20,12 @@ const AppContainer = connect(
     status: getWeatherRequestStatus(state),
     daySummary: getDaySummary(state),
     dayIcon: getDayIcon(state),
-    morningCommuteBadWeather: badWeatherForTimeRange(
+    morningCommuteWeather: getWeatherRange(
       state,
       getMorningCommuteStartTime(state),
       getMorningCommuteEndTime(state)
     ),
-    eveningCommuteBadWeather: badWeatherForTimeRange(
+    eveningCommuteWeather: getWeatherRange(
       state,
       getEveningCommuteStartTime(state),
       getEveningCommuteEndTime(state)
