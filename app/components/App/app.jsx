@@ -1,8 +1,14 @@
 import React             from 'react';
+import {
+  arrayOf,
+  string,
+  shape
+}                        from 'prop-types';
 import Header            from '../Header';
 import Spinner           from '../Spinner';
 import Error             from '../Error';
 import CommuteDisplay    from '../CommuteDisplay';
+import DayDisplay        from '../DayDisplay';
 import                        './style';
 
 
@@ -27,7 +33,10 @@ const app = ({
         }
         {status === 'complete' &&
           <div>
-            <p className="summary">{daySummary}</p>
+            <DayDisplay
+              summary={daySummary}
+              icon={dayIcon}
+            />
             <div className="shouldBike">
               {
                 [morningCommuteWeather, eveningCommuteWeather]
@@ -43,6 +52,12 @@ const app = ({
   </div>
 );
 
-app.propTypes = {};
+app.propTypes = {
+  status: string.isRequired,
+  daySummary: string.isRequired,
+  dayIcon: string.isRequired,
+  morningCommuteWeather: arrayOf(shape()).isRequired,
+  eveningCommuteWeather: arrayOf(shape()).isRequired
+};
 
 export default app;
