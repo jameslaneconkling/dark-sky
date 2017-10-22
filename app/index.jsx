@@ -1,4 +1,4 @@
-/* global document */
+/* global document window */
 import React                  from 'react';
 import { render }             from 'react-dom';
 import { Provider }           from 'react-redux';
@@ -8,6 +8,11 @@ import {
   fetchWeather
 }                             from './redux/modules/sky';
 import                             './style.scss';
+
+
+if (process.env.NODE_ENV === 'development') {
+  window.store = store;
+}
 
 
 store.dispatch(fetchWeather());

@@ -3,6 +3,7 @@
  */
 export const SET_MIN_TEMP = 'SET_MIN_TEMP';
 export const SET_MAX_TEMP = 'SET_MAX_TEMP';
+export const SET_MAX_PRECIPITATION = 'MAX_PRECIPITATION';
 export const SET_MORNING_COMMUTE_START_TIME = 'SET_MORNING_COMMUTE_START_TIME';
 export const SET_MORNING_COMMUTE_END_TIME = 'SET_MORNING_COMMUTE_END_TIME';
 export const SET_EVENING_COMMUTE_START_TIME = 'SET_EVENING_COMMUTE_START_TIME';
@@ -27,6 +28,7 @@ export default (
   state = {
     minTemp: 30,
     maxTemp: 95,
+    maxPrecipitation: 0.1,
     morningStartTime: { hours: 8, minutes: 0 },
     morningEndTime: { hours: 9, minutes: 0 },
     eveningStartTime: { hours: 5, minutes: 0 },
@@ -43,6 +45,11 @@ export default (
     return {
       ...state,
       maxTemp: action.temp
+    };
+  } else if (action.type === SET_MAX_PRECIPITATION) {
+    return {
+      ...state,
+      maxPrecipitation: action.temp
     };
   }
 

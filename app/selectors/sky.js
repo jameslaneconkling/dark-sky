@@ -1,6 +1,7 @@
 import {
   getMinTemp,
   getMaxTemp,
+  getMaxPrecipitation,
   getMorningCommuteStartTime,
   getMorningCommuteEndTime,
   getEveningCommuteStartTime,
@@ -21,14 +22,26 @@ export const getWeatherRange = (state, start, end) =>
       time >= time2DateTime(time, start) &&
       time <= time2DateTime(time, end)
     ));
-export const getShouldBikeForTimeRange = (state, start, end) => {
+export const badWeatherForTimeRange = (state, start, end) => {
   const minTemp = getMinTemp(state);
   const maxTemp = getMaxTemp(state);
+  const maxPrecipitation = getMaxPrecipitation(state);
 
-  return getWeatherRange(state, start, end)
-    .reduce((shouldBike, { temperature }) => (
-      shouldBike && temperature >= minTemp && temperature <= maxTemp
-    ), true);
+  return Object.keys(getWeatherRange(state, start, end)
+    .reduce((badWeather, { temperature, precipitation }) => {
+      if (temperature < minTemp) {
+        // safe to mutate badWeather, as it was created for this reduction
+        badWeather.cold = true; // eslint-disable-line no-param-reassign
+      } else if (temperature > maxTemp) {
+        badWeather.hot = true; // eslint-disable-line no-param-reassign
+      }
+
+      if (precipitation > maxPrecipitation) {
+        badWeather.rain = true; // eslint-disable-line no-param-reassign
+      }
+
+      return badWeather;
+    }, {}));
 };
 export const getShouldBikeForDay = (state) => {
   const morningStartTime = getMorningCommuteStartTime(state);
@@ -36,6 +49,6 @@ export const getShouldBikeForDay = (state) => {
   const eveningStartTime = getEveningCommuteStartTime(state);
   const eveningEndTime = getEveningCommuteEndTime(state);
 
-  return getShouldBikeForTimeRange(state, morningStartTime, morningEndTime) &&
-    getShouldBikeForTimeRange(state, eveningStartTime, eveningEndTime);
+  return badWeatherForTimeRange(state, morningStartTime, morningEndTime).length === 0 &&
+    badWeatherForTimeRange(state, eveningStartTime, eveningEndTime).length === 0;
 };

@@ -14,7 +14,7 @@ const deserializeHourly = ({ data }) =>
     time: time * 1000,
     summary,
     icon,
-    precipProbability,
+    precipitation: precipProbability,
     temperature
   }));
 
@@ -62,7 +62,7 @@ export default (
       ...state,
       status: 'complete',
       icon: action.response.currently.icon,
-      summary: action.response.hourly.summary,
+      summary: action.response.currently.summary,
       hourly: deserializeHourly(action.response.hourly)
     };
   }

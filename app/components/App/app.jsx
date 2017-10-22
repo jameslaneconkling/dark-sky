@@ -5,7 +5,7 @@ import Error       from '../Error';
 import                  './style';
 
 
-const app = ({ status, daySummary, dayIcon, shouldBikeForDay }) => (
+const app = ({ status, daySummary, dayIcon, morningCommuteBadWeather, eveningCommuteBadWeather }) => (
   <div className="app">
     <Header />
     <div className="limiter">
@@ -26,9 +26,13 @@ const app = ({ status, daySummary, dayIcon, shouldBikeForDay }) => (
           <div>
             <p className="summary">{daySummary}</p>
             <div className="shouldBike">
-              {shouldBikeForDay ?
-                <p>Good day to Bike</p> :
-                <p>Might want to take the metro</p>
+              {morningCommuteBadWeather.length === 0 ?
+                <p>Good day to Bike this morning</p> :
+                <p>Might want to take the metro this morning because of {morningCommuteBadWeather.join(', ')}</p>
+              }
+              {eveningCommuteBadWeather.length === 0 ?
+                <p>Good day to Bike this evening</p> :
+                <p>Might want to take the metro this evening because of {eveningCommuteBadWeather.join(', ')}</p>
               }
             </div>
           </div>
