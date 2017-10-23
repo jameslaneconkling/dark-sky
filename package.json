@@ -37,9 +37,12 @@
     "webpack-svgstore-plugin": "^4.0.1"
   },
   "dependencies": {
+    "@blueprintjs/core": "^1.32.0",
+    "@blueprintjs/datetime": "^1.23.0",
     "prop-types": "^15.5.10",
     "ramda": "^0.23.0",
     "react": "^15.5.4",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "recompose": "^0.23.4",

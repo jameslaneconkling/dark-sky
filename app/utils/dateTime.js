@@ -1,4 +1,4 @@
-export const time2DateTime = ({ hours, minutes }, dateTime) =>
+export const time2DateTime = ({ hours, minutes }, dateTime = Date.now()) =>
   +(new Date(dateTime).setHours(hours, minutes));
 
 export const isToday = dateTime => new Date(dateTime).getDate() === new Date().getDate();

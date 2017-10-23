@@ -10,6 +10,8 @@ import Error             from '../Error';
 import CommuteDisplay    from '../CommuteDisplay';
 import DayDisplay        from '../DayDisplay';
 import Settings          from '../../containers/SettingsContainer';
+// TODO - configure webpack loader: https://github.com/webpack-contrib/css-loader/issues/355
+// import                        '../../../node_modules/@blueprintjs/core/dist/blueprint.css';
 import                        './style';
 
 

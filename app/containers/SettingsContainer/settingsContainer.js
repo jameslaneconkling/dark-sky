@@ -15,6 +15,7 @@ import {
 import {
   setMinTemp,
   setMaxTemp,
+  setMaxPrecipitation,
   setMorningCommuteStartTime,
   setMorningCommuteEndTime,
   setEveningCommuteStartTime,
@@ -37,6 +38,7 @@ export default compose(
     {
       setMinTemp,
       setMaxTemp,
+      setMaxPrecipitation,
       setMorningCommuteStartTime,
       setMorningCommuteEndTime,
       setEveningCommuteStartTime,
@@ -45,6 +47,7 @@ export default compose(
   ),
   withHandlers({
     setMinTempAction: ({ setMinTemp }) => ({ target: { value } }) => setMinTemp(Number(value)),
-    setMaxTempAction: ({ setMaxTemp }) => ({ target: { value } }) => setMaxTemp(Number(value))
+    setMaxTempAction: ({ setMaxTemp }) => ({ target: { value } }) => setMaxTemp(Number(value)),
+    setMorningCommuteStartTimeAction: ({ setMorningCommuteStartTime }) => date => setMorningCommuteStartTime({ hours: date.getHours(), minutes: date.getMinutes() })
   })
 )(Settings);
