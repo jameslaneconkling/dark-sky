@@ -19,6 +19,10 @@ import {
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+/**
+ * middleware to persist user preferences to localStorage
+ */
 const localStorageMiddleware = store => next => (action) => {
   const result = next(action);
 
