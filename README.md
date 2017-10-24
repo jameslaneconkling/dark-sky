@@ -5,7 +5,7 @@ A simple UI for the Dark Sky API
 ### Installation
 
 * `npm install`
-* copy `.env.sample` file to `.env` add Dark Sky API key
+* copy `.env.sample` file to `.env` file and add Dark Sky API key
 
 ### Development
 
