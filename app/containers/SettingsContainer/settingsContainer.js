@@ -47,10 +47,18 @@ export default compose(
     }
   ),
   withHandlers({
-    setMinTempAction: ({ setMinTemp }) => ({ target: { value } }) => setMinTemp(Number(value)),
-    setMaxTempAction: ({ setMaxTemp }) => ({ target: { value } }) => setMaxTemp(Number(value)),
-    setMaxPrecipitationAction: ({ setMaxPrecipitation }) => ({ target: { value } }) =>
-      setMaxPrecipitation(Number(value) / 100),
+    setMinTempAction: ({ setMinTemp }) => (e) => {
+      e.preventDefault();
+      setMinTemp(Number(e.target.value));
+    },
+    setMaxTempAction: ({ setMaxTemp }) => (e) => {
+      e.preventDefault();
+      setMaxTemp(Number(e.target.value));
+    },
+    setMaxPrecipitationAction: ({ setMaxPrecipitation }) => (e) => {
+      e.preventDefault();
+      setMaxPrecipitation(Number(Math.floor(e.target.value)) / 100);
+    },
     setMorningCommuteStartTimeAction: ({ setMorningCommuteStartTime }) => date =>
       setMorningCommuteStartTime({ hours: date.getHours(), minutes: date.getMinutes() }),
     setMorningCommuteEndTimeAction: ({ setMorningCommuteEndTime }) => date =>

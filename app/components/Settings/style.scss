@@ -3,7 +3,7 @@
   border-bottom: 1px solid #ccc;
   margin: 1rem 0;
 
-  form {
+  .form {
     display: inline-block;
     width: 50%;
     display: inline-block;
@@ -33,6 +33,7 @@
 
       .pt-input {
         width: 79px;
+        font-size: 11px;
       }
     }
   }

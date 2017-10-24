@@ -23,7 +23,7 @@ const Settings = ({
 }) => (
   <div className="settings">
     <div>
-      <form>
+      <div className="form">
         <h2>Temperature</h2>
         <label className="pt-label .modifier">
           Minimum <span className="unit">(˚F)</span>
@@ -47,24 +47,24 @@ const Settings = ({
             onChange={setMaxTempAction}
           />
         </label>
-      </form>
+      </div>
 
-      <form>
+      <div className="form">
         <h2>Change of Rain</h2>
         <label className="pt-label .modifier">
           Maximum <span className="unit">(%)</span>
           <input
             className="pt-input"
             type="number"
-            value={maxPrecipitation * 100}
+            value={Math.floor(maxPrecipitation * 100)}
             min={0}
             max={100}
             onChange={setMaxPrecipitationAction}
           />
         </label>
-      </form>
+      </div>
 
-      <form>
+      <div className="form">
         <h2>Morning Commute</h2>
         <label className="pt-label">
           Start Time
@@ -92,9 +92,9 @@ const Settings = ({
             onChange={setMorningCommuteEndTimeAction}
           />
         </label>
-      </form>
+      </div>
 
-      <form>
+      <div className="form">
         <h2>Evening Commute</h2>
         <label className="pt-label">
           Start Time
@@ -122,7 +122,7 @@ const Settings = ({
             onChange={setEveningCommuteEndTimeAction}
           />
         </label>
-      </form>
+      </div>
     </div>
   </div>
 );
