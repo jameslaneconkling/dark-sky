@@ -1,6 +1,7 @@
 /**
  * constants
  */
+export const SET_SETTINGS_IS_OPEN = 'SET_SETTINGS_IS_OPEN';
 export const SET_MIN_TEMP = 'SET_MIN_TEMP';
 export const SET_MAX_TEMP = 'SET_MAX_TEMP';
 export const SET_MAX_PRECIPITATION = 'SET_MAX_PRECIPITATION';
@@ -13,6 +14,7 @@ export const SET_EVENING_COMMUTE_END_TIME = 'SET_EVENING_COMMUTE_END_TIME';
 /**
  * action creators
  */
+export const setSettingsIsOpen = isOpen => ({ type: SET_SETTINGS_IS_OPEN, isOpen });
 export const setMinTemp = temp => ({ type: SET_MIN_TEMP, temp });
 export const setMaxTemp = temp => ({ type: SET_MAX_TEMP, temp });
 export const setMaxPrecipitation = precipitation => ({ type: SET_MAX_TEMP, precipitation });
@@ -27,6 +29,7 @@ export const setEveningCommuteEndTime = time => ({ type: SET_EVENING_COMMUTE_END
  */
 export default (
   state = {
+    settingsIsOpen: false,
     minTemp: 30,
     maxTemp: 95,
     maxPrecipitation: 0.1,
@@ -37,7 +40,12 @@ export default (
   },
   action
 ) => {
-  if (action.type === SET_MIN_TEMP) {
+  if (action.type === SET_SETTINGS_IS_OPEN) {
+    return {
+      ...state,
+      settingsIsOpen: action.isOpen
+    };
+  } else if (action.type === SET_MIN_TEMP) {
     return {
       ...state,
       minTemp: action.temp
@@ -56,6 +64,21 @@ export default (
     return {
       ...state,
       morningStartTime: action.time
+    };
+  } else if (action.type === SET_MORNING_COMMUTE_END_TIME) {
+    return {
+      ...state,
+      morningEndTime: action.time
+    };
+  } else if (action.type === SET_EVENING_COMMUTE_START_TIME) {
+    return {
+      ...state,
+      eveningStartTime: action.time
+    };
+  } else if (action.type === SET_EVENING_COMMUTE_END_TIME) {
+    return {
+      ...state,
+      eveningEndTime: action.time
     };
   }
 

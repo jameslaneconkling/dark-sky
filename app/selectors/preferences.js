@@ -1,3 +1,4 @@
+export const getSettingsIsOpen = state => state.preferences.settingsIsOpen;
 export const getMinTemp = state => state.preferences.minTemp;
 export const getMaxTemp = state => state.preferences.maxTemp;
 export const getMaxPrecipitation = state => state.preferences.maxPrecipitation;

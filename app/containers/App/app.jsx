@@ -8,6 +8,7 @@ import {
   getWeatherRange
 }                          from '../../selectors/sky';
 import {
+  getSettingsIsOpen,
   getMorningCommuteStartTime,
   getMorningCommuteEndTime,
   getEveningCommuteStartTime,
@@ -17,6 +18,7 @@ import App                 from '../../components/App';
 
 const AppContainer = connect(
   state => ({
+    settingsIsOpen: getSettingsIsOpen(state),
     status: getWeatherRequestStatus(state),
     daySummary: getDaySummary(state),
     dayIcon: getDayIcon(state),

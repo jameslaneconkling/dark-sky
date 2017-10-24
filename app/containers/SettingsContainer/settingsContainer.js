@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { connect }      from 'react-redux';
 import {
   compose,
@@ -48,6 +49,15 @@ export default compose(
   withHandlers({
     setMinTempAction: ({ setMinTemp }) => ({ target: { value } }) => setMinTemp(Number(value)),
     setMaxTempAction: ({ setMaxTemp }) => ({ target: { value } }) => setMaxTemp(Number(value)),
-    setMorningCommuteStartTimeAction: ({ setMorningCommuteStartTime }) => date => setMorningCommuteStartTime({ hours: date.getHours(), minutes: date.getMinutes() })
+    setMaxPrecipitationAction: ({ setMaxPrecipitation }) => ({ target: { value } }) =>
+      setMaxPrecipitation(Number(value) / 100),
+    setMorningCommuteStartTimeAction: ({ setMorningCommuteStartTime }) => date =>
+      setMorningCommuteStartTime({ hours: date.getHours(), minutes: date.getMinutes() }),
+    setMorningCommuteEndTimeAction: ({ setMorningCommuteEndTime }) => date =>
+      setMorningCommuteEndTime({ hours: date.getHours(), minutes: date.getMinutes() }),
+    setEveningCommuteStartTimeAction: ({ setEveningCommuteStartTime }) => date =>
+      setEveningCommuteStartTime({ hours: date.getHours(), minutes: date.getMinutes() }),
+    setEveningCommuteEndTimeAction: ({ setEveningCommuteEndTime }) => date =>
+      setEveningCommuteEndTime({ hours: date.getHours(), minutes: date.getMinutes() })
   })
 )(Settings);

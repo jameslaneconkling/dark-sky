@@ -16,9 +16,43 @@
   }
 
   h2 {
+    display: inline-block;
     color: #fff;
     font-size: 34px;
     font-weight: 300;
     padding-top: 14px;
+  }
+
+  button {
+    padding-top: 8px;
+    background: transparent;
+    border: none;
+    float: right;
+    fill: #ccc;
+    cursor: pointer;
+
+    &:hover {
+      fill: white;
+    }
+
+    &.active {
+      fill: rgb(242, 141, 255);
+
+      &:hover {
+        fill: rgb(194, 86, 208);
+      }
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h2 {
+      font-size: 22px;
+      line-height: 2rem;
+    }
   }
 }

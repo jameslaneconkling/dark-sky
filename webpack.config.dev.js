@@ -42,6 +42,25 @@ module.exports = {
         loader: 'style-loader!css-loader!sass-loader?sourceMap'
       },
       {
+        test: /\.(woff|woff2)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: 'fonts/[hash].[ext]',
+            limit: 5000,
+            mimetype: 'application/font-woff'
+          }
+        }
+      }, {
+        test: /\.(ttf|eot|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[hash].[ext]'
+          }
+        }
+      },
+      {
         test: /\.(woff2?|svg)$/,
         loader: 'url-loader?limit=10000'
       }

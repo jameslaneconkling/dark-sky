@@ -1,9 +1,12 @@
 import React                   from 'react';
-import {}                      from 'prop-types';
+import {
+  func
+}                              from 'prop-types';
+import Icon                    from '../Icon';
 import                              './style.scss';
 
 
-const Header = () => (
+const Header = ({ settingsIsOpen, toggleSettings }) => (
   <div
     className="header"
   >
@@ -17,11 +20,21 @@ const Header = () => (
         </svg>
       </span>
       <h2>Should I Bike?</h2>
+
+      <button
+        className={settingsIsOpen ? 'active' : ''}
+        onClick={toggleSettings}
+        title="settings"
+      >
+        <Icon name="clear-day" />
+      </button>
     </div>
   </div>
 );
 
 
-Header.propTypes = {};
+Header.propTypes = {
+  toggleSettings: func.isRequired
+};
 
 export default Header;
