@@ -1,3 +1,8 @@
+import {
+  loadPreferences
+}                         from '../../utils/localStorage';
+
+
 /**
  * constants
  */
@@ -17,7 +22,7 @@ export const SET_EVENING_COMMUTE_END_TIME = 'SET_EVENING_COMMUTE_END_TIME';
 export const setSettingsIsOpen = isOpen => ({ type: SET_SETTINGS_IS_OPEN, isOpen });
 export const setMinTemp = temp => ({ type: SET_MIN_TEMP, temp });
 export const setMaxTemp = temp => ({ type: SET_MAX_TEMP, temp });
-export const setMaxPrecipitation = precipitation => ({ type: SET_MAX_TEMP, precipitation });
+export const setMaxPrecipitation = precipitation => ({ type: SET_MAX_PRECIPITATION, precipitation });
 export const setMorningCommuteStartTime = time => ({ type: SET_MORNING_COMMUTE_START_TIME, time });
 export const setMorningCommuteEndTime = time => ({ type: SET_MORNING_COMMUTE_END_TIME, time });
 export const setEveningCommuteStartTime = time => ({ type: SET_EVENING_COMMUTE_START_TIME, time });
@@ -36,7 +41,8 @@ export default (
     morningStartTime: { hours: 8, minutes: 0 },
     morningEndTime: { hours: 9, minutes: 0 },
     eveningStartTime: { hours: 17, minutes: 0 },
-    eveningEndTime: { hours: 18, minutes: 0 }
+    eveningEndTime: { hours: 18, minutes: 0 },
+    ...loadPreferences()
   },
   action
 ) => {
